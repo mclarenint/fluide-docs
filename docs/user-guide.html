@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>fluide User Guide - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="user-guide.html" class="active"><strong aria-hidden="true">1.</strong> fluide User Guide</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title"></h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <hr />
+<p>description: &gt;-
+This document describes the functionality of the Administrative Interface of
+the fluide 2016 product.</p>
+<hr />
+<a class="header" href="#fluide-user-guide" id="fluide-user-guide"><h1>fluide User Guide</h1></a>
+<a class="header" href="#document-control" id="document-control"><h3>Document Control</h3></a>
+<table><thead><tr><th align="left"> <strong>Author Name</strong> </th><th align="left"> <strong>Emma Sciberras</strong> </th></tr></thead><tbody>
+<tr><td align="left"> <strong>Title</strong> </td><td align="left"> <strong>fluide User Guide</strong> </td></tr>
+<tr><td align="left"> <strong>Author Contact</strong> </td><td align="left"> <strong>emma-lee.sciberras@mclarenint.com</strong> </td></tr>
+<tr><td align="left"> <strong>Document Name</strong> </td><td align="left"> <strong>fluide User Guide V2.0</strong> </td></tr>
+</tbody></table>
+<a class="header" href="#version-history" id="version-history"><h4>Version History</h4></a>
+<table><thead><tr><th align="left"> <strong>Version</strong> </th><th align="left"> <strong>Effective Date</strong> </th><th> <strong>Update Originator/Author</strong> </th><th> <strong>Reason Comment</strong> </th></tr></thead><tbody>
+<tr><td align="left"> <strong>1.0</strong> </td><td align="left"> <strong>24/11/2016</strong> </td><td align="left"> <strong>Marc Jonkers</strong> </td><td align="left"> <strong>Initial Release</strong> </td></tr>
+<tr><td align="left"> 2.0 **** </td><td align="left"> <strong>6/07/2018</strong> </td><td align="left"> <strong>Emma Sciberras</strong> </td><td align="left"> <strong>Updated release</strong> </td></tr>
+</tbody></table>
+<a class="header" href="#fluide-admin-login" id="fluide-admin-login"><h3>fluide Admin Login</h3></a>
+<p>The login page for fluide is always</p>
+<p>&lt;property&gt;.fluide.mclarenint.com/HSM/HSM.php or &lt;IP address&gt;/HSM/HSM.php</p>
+<p>This page will give you a login prompt.</p>
+<p><img src=".gitbook/assets/screen-shot-2018-07-04-at-10.24.19-pm.png" alt="Login prompt for fluide" /></p>
+<p>All accounts will consist of an email address and a password. An account can only be created from an existing administrator account within fluide.</p>
+<a class="header" href="#access-levels" id="access-levels"><h3>Access Levels</h3></a>
+<p>fluide has three levels of access. The default privileges for each access level are described below. These defaults can be adjusted by McLaren staff to suit each fluide instance. The purpose and usage of the various modules will be explained elsewhere in this document.</p>
+<a class="header" href="#staff" id="staff"><h4>Staff</h4></a>
+<p>This is the base level of access. Staff level users can only create hotspot tickets (if the hotspot module is in use) and use the Guest Management Tool to see details about a guest account. They will also have access to Live Devices reports.</p>
+<a class="header" href="#supervisor" id="supervisor"><h4>Supervisor</h4></a>
+<p>On top of what's included in staff access, Supervisors will also have the following modules available:</p>
+<ul>
+<li>Add/edit/delete access plans for any of the modules that are enabled for the site (inroom, hotspot, self-service, conference)</li>
+<li>Live Transactions report</li>
+</ul>
+<a class="header" href="#administrator" id="administrator"><h4>Administrator</h4></a>
+<p>Administrators are given access to all areas of fluide.</p>
+<ul>
+<li>Add/edit/delete user accounts</li>
+<li>Set Report Recipients</li>
+<li>fluide Analytics</li>
+</ul>
+<a class="header" href="#landing-page--main-menu" id="landing-page--main-menu"><h3><strong>Landing Page &amp; Main Menu</strong></h3></a>
+<p>If the account has administrator rights, the landing page shown is the fluide Dashboard.</p>
+<p>If the account does not have administrator rights, the first page will be the Guest Management Tool (GMT) page.</p>
+<p><img src=".gitbook/assets/screen-shot-2018-09-27-at-11.29.17-pm.png" alt="Guest Management Tool with access level" /></p>
+<p>The access level will be indicated next to the page name if the user is not of the basic ‘Staff’ level.</p>
+<p>The main menu is situated on the left hand side of the screen and is persistent throughout and dynamic. It will only display the items that are available to the access level of the user.</p>
+<a class="header" href="#the-fluide-dashboard" id="the-fluide-dashboard"><h3>The fluide Dashboard</h3></a>
+<p>The fluide Dashboard, different to the Server Dashboard, provides an overview of active plans, conferences and devices, used bandwidth, users and Facebook statistics. Charts are able to be changed to hourly, daily, weekly, monthly or yearly. The fluide Dashboard can be found under the analytics tab, and on the home page of an admin account.</p>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-8.21.08-pm.png" alt="Dashboard for fluide - demo only" /></p>
+<a class="header" href="#accounts" id="accounts"><h3>Accounts</h3></a>
+<a class="header" href="#add-account" id="add-account"><h4>Add Account</h4></a>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-8.55.06-pm.png" alt="" /></p>
+<p>Accounts are created to allow access to the fluide portal. You'll be required to enter an email address and a password during account creation. The password can be changed by the user once they have logged into fluide.</p>
+<p>The permission level (Staff/Supervisor/Admin) of the account will be selected during account creation.</p>
+<p>To determine which site the account has permission to access, the admin may select the list of sites available in site permissions.</p>
+<p>To change the landing page of an account, the admin may click the drop down menu under Homepage and select accordingly.</p>
+<p>When creating an admin account (to be done by admin only), email address and passwords are part of the login credentials required. Admin accounts will be given access to all modules and sites available, while homepage will default to display the fluide dashboard, this cannot be changed.</p>
+<a class="header" href="#change-password" id="change-password"><h4>Change Password</h4></a>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-8.56.57-pm.png" alt="" /></p>
+<p>Users may change their passwords after logging in by going to Accounts &gt; Change Password. They will be required to input their existing password and new password. Once they hit the Submit button, the new password will be saved and they can utilize it to log in during their next log in attempt.</p>
+<a class="header" href="#delete-an-account" id="delete-an-account"><h4>Delete an account</h4></a>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-8.57.25-pm.png" alt="" /></p>
+<p>Admins are given access to delete an account in the fluide portal. When deleting accounts, admins will enter the email of the account to be deleted &gt; hit Submit button and a confirmation screen will be displayed.</p>
+<p>If the confirmation screen is not displayed, please check that the email address entered is correct and try again, Please ensure the email address entered is the same as the one the user uses to log in to fluide.</p>
+<p><img src=".gitbook/assets/screen-shot-2018-09-27-at-11.36.13-pm.png" alt="Account deleted confirmation page" /></p>
+<a class="header" href="#editing-an-account" id="editing-an-account"><h4>Editing an account</h4></a>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-2.43.39-pm.png" alt="Editing a pre-existing account" /></p>
+<p>Admins are given the rights to modify the paracmeters associated to existing user accounts of all access levels. This includes changing the accounts access to a specific module, configuring the landing page, as well as resetting a users password when required.</p>
+<a class="header" href="#fluide-analytics" id="fluide-analytics"><h3>fluide Analytics</h3></a>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-2.45.07-pm%20%281%29.png" alt="Landing page for fluide Analytics" /></p>
+<p>fluide analytics consists of a number of detailed historical and up to date charts that cover all elements of guest behaviour and Internet utilisation.</p>
+<p>The chart types are:</p>
+<ul>
+<li>Average Usage</li>
+<li>Average Duration</li>
+<li>Average Users / Time</li>
+<li>OS Chart</li>
+<li>Total Usage</li>
+<li>Unique Users</li>
+</ul>
+<p>All charts are monthly charts with one column per day except for the Average Users / Time chart, which is a daily chart with a granularity which can be set (see image below). The OS Chart is monthly, however it is a pie chart.</p>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-2.47.56-pm.png" alt="Integration period for Average Users / Time Analytics chart" /></p>
+<p>All charts can be emailed once generated, and a CSV file with the chart data can be attached.</p>
+<a class="header" href="#self-service--inroom--hotspot" id="self-service--inroom--hotspot"><h3><strong>Self-service / Inroom / Hotspot</strong></h3></a>
+<ul>
+<li>Self-service plans are applied automatically to guests logging in to a specific location.</li>
+<li>Inroom plans require a last name and room number to log in and are checked against the property’s PMS.</li>
+<li>Hotspot plans are used to create an access code at the property front desk which is given or emailed to a guest.</li>
+</ul>
+<p>The plans mentioned above applies to different guest type, however, the creation and configuration of plans are similar.</p>
+<a class="header" href="#add-plan" id="add-plan"><h4>Add plan</h4></a>
+<p><img src=".gitbook/assets/collage.jpg" alt="Adding a Self-Service plan" /></p>
+<p>This panel collects all the parameters that need to be defined for a new plan.</p>
+<table><thead><tr><th>  </th><th>  </th></tr></thead><tbody>
+<tr><td align="left"> <strong>Name</strong> </td><td align="left"> <strong>The name visible to guests.</strong> </td></tr>
+<tr><td align="left"> <strong>Amount</strong> </td><td align="left"> <strong>For a free plan, enter 0, otherwise enter the dollar amount</strong> </td></tr>
+<tr><td align="left"> <strong>Device Limit</strong> </td><td align="left"> <strong>The maximum number of devices that can be associated with this plan.</strong> </td></tr>
+<tr><td align="left"> <strong>Time Limit</strong> </td><td align="left"> <strong>How long the plan will remain active for. Enter 0 for unlimited.</strong> </td></tr>
+<tr><td align="left"> <strong>Cycle</strong> </td><td align="left"> <strong>How much data over a set amount of time the user has available. Enter 0 for unlimited</strong> </td></tr>
+<tr><td align="left"> <strong>Data Limit</strong> </td><td align="left"> <strong>The plan will expire after the data limit is reached. Enter 0 for unlimited.</strong> </td></tr>
+<tr><td align="left"> <strong>Metering Type</strong> </td><td align="left"> <strong>Count all data, or only the download.</strong> </td></tr>
+<tr><td align="left"> <strong>Bandwidth</strong> </td><td align="left"> <strong>Upstream and downstream speed.</strong> </td></tr>
+<tr><td align="left"> <strong>Loyalty</strong> </td><td align="left"> <strong>If VIP tags are active in the PMS these can be linked to a plan.</strong> </td></tr>
+<tr><td align="left"> <strong>Properties</strong> </td><td align="left"> <strong>Locations the plan will be present at.</strong> </td></tr>
+<tr><td align="left"> <strong>Roaming</strong> </td><td align="left"> <strong>Locations the plan can be used.</strong> </td></tr>
+</tbody></table>
+<a class="header" href="#time-and-data-limits" id="time-and-data-limits"><h4>Time and data limits</h4></a>
+<p>Time and data limits are used to restrict guest usage. There are two levels of restriction, Total and Cycle.</p>
+<p><strong>Total</strong> time and data limits pertain to the absolute maximum for the plan. For example a total limit of 1GB and 5 days means that the plan will get capped when either one of those limits is reached. There is no restriction of how the data gets consumed. If the guest consumes the data in the first hour, they will get capped and not be able to use their plan for the rest of the time.</p>
+<p><strong>Cycle</strong> limits can be used to further restrict the guest by setting data limits for specific time periods. For example the total could be 5GB and 5 days, with a cycle of 2GB per day. This means no more than 2GB could be used in any one day of the total 5 day plan. Once the cycle limit gets reached, the plan would be disabled for the rest of the cycle period (in this case for the rest of the day).</p>
+<a class="header" href="#edit-plans" id="edit-plans"><h4>Edit plans</h4></a>
+<p><img src="https://lh3.googleusercontent.com/w-185nzdhSOH6Zmf9HsXd4pweV09NM2yeSBnBpwKTPnMm0e_E34-IQ8zNZ3yb-V4NOMhkGB7QHQ8ZiDZmYxVlB6oC__ESJQlzGZZNu6eNX7zllW4ub14nRSTOzPcZ8B_TjqMPQZb" alt="Edit Inroom plans as an administrator" /></p>
+<p>On this screen all parameters as described in the Add Plan section above can be edited for any existing plans. Users may also delete an existing plan. TOn this screen, the plans displayed can be edited and deleted. If you are unable to identify a desired plan, please ensure you are looking into the correct module - whether it is self-service, hotspot or inroom.</p>
+<a class="header" href="#management" id="management"><h3>Management</h3></a>
+<a class="header" href="#guest-management-tool" id="guest-management-tool"><h4>Guest Management Tool</h4></a>
+<p><img src=".gitbook/assets/screen-shot-2018-07-05-at-8.21.43-pm.png" alt="" /></p>
+<p>This is the default screen for most users. It enables a guest lookup either via the guest device MAC address, or via their last name and room number (for inhouse guests).</p>
+<p>The GMT will show a great amount of detail about a guest account.</p>
+<p><img src="https://lh4.googleusercontent.com/J1abYYHLcmuJj6lBCm37Cz7StIvXURamkXRyUdGcFxcJi_4PLYUnm2tBeDVJ6QOxhbjcQaDNRlwpVmiUqFZE9H06Rc_pij5uAMiUNQWM9pXDC58sk4ZzeUcIcBpgiiaEqsZ0rK9n" alt="Detailed information about a specific account" /></p>
+<p>The top section shows the plan parameters and how much time and data has been used in total.</p>
+<p>The middle section shows detailed information for each of the devices that are using the plan, including device type, number of sessions, data usage and time spent online.</p>
+<p>The bottom section is a graphical representation of the movements of each device between the various locations it is allowed to roam to.</p>
+<p>This tool typically answers any questions the quest may have pertaining to their internet usage or account. The tool will tell you if a guest has exceeded their accounts time or data limit, the number of devices connected, the devices being used and at which locations.</p>
+<a class="header" href="#live-devices" id="live-devices"><h4>Live Devices</h4></a>
+<p><img src="https://lh4.googleusercontent.com/y_-60IuCLVJq8PjuVenRxrkysqfAKYUIyt_6BCiDwKsv1DwB6mLBHh0h6AAnHMX4a5wyrpuOQ33pUJB-eIy3Q-Malq59__hSEM3Q-JtSYyTzR9Esb27D10jpgLJ95VX391JWc0CW" alt="Shows a log of currently active devices" /></p>
+<p>The live devices log provides an easy to read overview of all devices that are currently using the Internet. The account ID can be clicked on to open the GMT for that account and see the detail. The current user is also able to sort using the arrows next to every type of information.</p>
+<a class="header" href="#live-transaction-record" id="live-transaction-record"><h4>Live Transaction Record</h4></a>
+<p><img src="https://lh5.googleusercontent.com/BYqThY38JEq5srTGdec5vOXE14Rqel6QqLKZS1A7iO-g2WpIlYhL-L7-L_RvGZcjBAKyydbRAtqQC0Uo9wUgUip-kl3NhQ5djFCX0wqPUSyAa85PPoQyRzXz8WxSFNdzVB4KcyE2" alt="Live transaction log information" /></p>
+<p>The live transactions log provides an easy to read overview of all plan purchases that have occurred on the current day. The account ID can be clicked on to open the GMT for that account and see the detail.</p>
+<a class="header" href="#set-report-recipients" id="set-report-recipients"><h4>Set Report Recipients</h4></a>
+<p><img src="https://lh4.googleusercontent.com/swz8t-A7WC5c7pGn-IGYPJWFKcPKJo3ZuyGS6she90xVMnocn7f8017qFQyKhETX_cmPKlm_97pl0a5eyBdmY95voQmCW9de6pFth0JdzuclLx8du4UkUMcKBUWVCvaNCPSMIgm7" alt="Submitting Transaction reports " /></p>
+<p>This is where the email distribution lists are set up for the daily reports. fluide can send daily reports for all transactions, Top20 users and all active devices. These reports are generated per location, and are divided by account type (free / paid, inroom / hotspot, etc).</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
