@@ -1,4 +1,16 @@
 [book]
-authors = []
+title = "Fluide User Guide"
+description = "This document describes the functionality of the Administrative Interface of the fluide 2016 product."
+authors = ["Emma-Lee Sciberras", "Marc Jonkers", "Nicholas Beith"]
 multilingual = false
 src = "src"
+
+[build]
+build-dir = "docs"
+preprocess = ["index", "links"]
+
+[output.html]
+theme = "theme"
+additional-css = []
+additional-js = []
+google-analytics = 0

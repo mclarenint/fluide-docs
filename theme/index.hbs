@@ -1,38 +1,43 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="{{ language }}" class="sidebar-visible no-js">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>fluide User Guide - Fluide User Guide</title>
+        <title>{{ title }}</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="This document describes the functionality of the Administrative Interface of the fluide 2016 product.">
+        <meta name="description" content="{{ description }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="shortcut icon" href="{{ path_to_root }}{{ favicon }}">
+        <link rel="stylesheet" href="{{ path_to_root }}css/variables.css">
+        <link rel="stylesheet" href="{{ path_to_root }}css/general.css">
+        <link rel="stylesheet" href="{{ path_to_root }}css/chrome.css">
+        <link rel="stylesheet" href="{{ path_to_root }}css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="{{ path_to_root }}FontAwesome/css/font-awesome.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="{{ path_to_root }}highlight.css">
+        <link rel="stylesheet" href="{{ path_to_root }}tomorrow-night.css">
+        <link rel="stylesheet" href="{{ path_to_root }}ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
+        {{#each additional_css}}
+        <link rel="stylesheet" href="{{ this }}">
+        {{/each}}
 
-        
+        {{#if mathjax_support}}
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        {{/if}}
     </head>
     <body class="light">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "";</script>
+        <script type="text/javascript">var path_to_root = "{{ path_to_root }}";</script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -73,13 +78,13 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="user-guide.html"><strong aria-hidden="true">1.</strong> fluide User Guide</a></li><li><ol class="section"><li><a href="accounts.html"><strong aria-hidden="true">1.1.</strong> Accounts</a></li><li><a href="analytics.html"><strong aria-hidden="true">1.2.</strong> Analytics</a></li><li><a href="management.html"><strong aria-hidden="true">1.3.</strong> Management</a></li><li><a href="plans.html"><strong aria-hidden="true">1.4.</strong> Plans</a></li></ol></li></ol>
+            {{#toc}}{{/toc}}
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
+                {{> header}}
                 <div id="menu-bar" class="menu-bar">
                     <div id="menu-bar-sticky-container">
                         <div class="left-buttons">
@@ -96,24 +101,24 @@
                                 <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                                 <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                             </ul>
-                            
+                            {{#if search_enabled}}
                             <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                                 <i class="fa fa-search"></i>
                             </button>
-                            
+                            {{/if}}
                         </div>
 
-                        <h1 class="menu-title">Fluide User Guide</h1>
+                        <h1 class="menu-title">{{ book_title }}</h1>
 
                         <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <a href="{{ path_to_root }}print.html" title="Print this book" aria-label="Print this book">
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                
+                {{#if search_enabled}}
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
@@ -124,7 +129,7 @@
                         </ul>
                     </div>
                 </div>
-                
+                {{/if}}
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -137,55 +142,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#fluide-user-guide" id="fluide-user-guide"><h1>fluide User Guide</h1></a>
-<a class="header" href="#document-control" id="document-control"><h3>Document Control</h3></a>
-<table><thead><tr><th align="left"> <strong>Author Name</strong> </th><th align="left"> <strong>Emma Sciberras</strong> </th></tr></thead><tbody>
-<tr><td align="left"> <strong>Title</strong> </td><td align="left"> <strong>fluide User Guide</strong> </td></tr>
-<tr><td align="left"> <strong>Author Contact</strong> </td><td align="left"> <strong>emma-lee.sciberras@mclarenint.com</strong> </td></tr>
-<tr><td align="left"> <strong>Document Name</strong> </td><td align="left"> <strong>fluide User Guide V2.0</strong> </td></tr>
-</tbody></table>
-<a class="header" href="#version-history" id="version-history"><h4>Version History</h4></a>
-<table><thead><tr><th align="left"> <strong>Version</strong> </th><th align="left"> <strong>Effective Date</strong> </th><th> <strong>Update Originator/Author</strong> </th><th> <strong>Reason Comment</strong> </th></tr></thead><tbody>
-<tr><td align="left"> <strong>1.0</strong> </td><td align="left"> <strong>24/11/2016</strong> </td><td align="left"> <strong>Marc Jonkers</strong> </td><td align="left"> <strong>Initial Release</strong> </td></tr>
-<tr><td align="left"> <strong>2.0</strong> </td><td align="left"> <strong>6/07/2018</strong> </td><td align="left"> <strong>Emma Sciberras</strong> </td><td align="left"> <strong>Updated Release</strong> </td></tr>
-</tbody></table>
-<a class="header" href="#fluide-admin-login" id="fluide-admin-login"><h3>fluide Admin Login</h3></a>
-<p>The login page for fluide is always</p>
-<p>&lt;property&gt;.fluide.mclarenint.com/HSM/HSM.php or &lt;IP address&gt;/HSM/HSM.php</p>
-<p>This page will give you a login prompt.</p>
-<p><img src="img/screen-shot-2018-07-04-at-10.24.19-pm.png" alt="Login prompt for fluide" /></p>
-<p>All accounts will consist of an email address and a password. An account can only be created from an existing administrator account within fluide.</p>
-<a class="header" href="#access-levels" id="access-levels"><h3>Access Levels</h3></a>
-<p>fluide has three levels of access. The default privileges for each access level are described below. These defaults can be adjusted by McLaren staff to suit each fluide instance. The purpose and usage of the various modules will be explained elsewhere in this document.</p>
-<a class="header" href="#staff" id="staff"><h4>Staff</h4></a>
-<p>This is the base level of access. Staff level users can only create hotspot tickets (if the hotspot module is in use) and use the Guest Management Tool to see details about a guest account. They will also have access to Live Devices reports.</p>
-<a class="header" href="#supervisor" id="supervisor"><h4>Supervisor</h4></a>
-<p>On top of what's included in staff access, Supervisors will also have the following modules available:</p>
-<ul>
-<li>Add/edit/delete access plans for any of the modules that are enabled for the site (inroom, hotspot, self-service, conference)</li>
-<li>Live Transactions report</li>
-</ul>
-<a class="header" href="#administrator" id="administrator"><h4>Administrator</h4></a>
-<p>Administrators are given access to all areas of fluide.</p>
-<ul>
-<li>Add/edit/delete user accounts</li>
-<li>Set Report Recipients</li>
-<li>fluide Analytics</li>
-</ul>
-<a class="header" href="#landing-page--main-menu" id="landing-page--main-menu"><h3><strong>Landing Page &amp; Main Menu</strong></h3></a>
-<p>If the account has administrator rights, the landing page shown is the fluide Dashboard.</p>
-<p>If the account does not have administrator rights, the first page will be the Guest Management Tool (GMT) page.</p>
-<p><img src="img/screen-shot-2018-09-27-at-11.29.17-pm.png" alt="Guest Management Tool with access level" /></p>
-<p>The access level will be indicated next to the page name if the user is not of the basic ‘Staff’ level.</p>
-<p>The main menu is situated on the left hand side of the screen and is persistent throughout and dynamic. It will only display the items that are available to the access level of the user.</p>
-
+                        {{{ content }}}
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
+                        {{#previous}}
+                            <a rel="prev" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        {{/previous}}
 
-                        
+                        {{#next}}
+                            <a rel="next" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        {{/next}}
 
                         <div style="clear: both"></div>
                     </nav>
@@ -193,33 +165,97 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
+                {{#previous}}
+                    <a href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                {{/previous}}
 
-                
+                {{#next}}
+                    <a href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                {{/next}}
             </nav>
 
         </div>
 
-        
+        {{#if livereload}}
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("{{{livereload}}}");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
 
-        
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        {{/if}}
 
-        
+        {{#if google_analytics}}
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+                ga('create', '{{google_analytics}}', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        {{/if}}
+
+        {{#if playpen_js}}
+        <script src="{{ path_to_root }}ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        {{/if}}
+
+        {{#if search_js}}
+        <script src="{{ path_to_root }}elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}searcher.js" type="text/javascript" charset="utf-8"></script>
+        {{/if}}
+
+        <script src="{{ path_to_root }}clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ path_to_root }}book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
+        {{#each additional_js}}
+        <script type="text/javascript" src="{{ path_to_root }}{{this}}"></script>
+        {{/each}}
 
-        
+        {{#if is_print}}
+        {{#if mathjax_support}}
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+        {{else}}
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        {{/if}}
+        {{/if}}
 
     </body>
 </html>
